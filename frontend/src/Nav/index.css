@@ -1,0 +1,12 @@
+.nav--background-image {
+    background-color: #955a2c;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 75%;
+    filter: sepia(50%);
+}
+
+.nav--link-active {
+    font-weight: 700;
+}

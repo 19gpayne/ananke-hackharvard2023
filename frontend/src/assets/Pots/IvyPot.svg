@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 216.72 283.07">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-4 {
+        fill: #a67c52;
+      }
+
+      .cls-5 {
+        fill: #8c6339;
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="cls-2" d="m37.9,150.77c-25.86,50.68-3.54,108.71,38.15,126.3,33.39,14.09,76.5,2.92,99.99-28.94,20.74-28.14,22.14-66.82,3.29-97.36"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <polygon class="cls-1" points="50.24 153.77 109.72 70.63 169.85 153.77 50.24 153.77"/>
+    <line class="cls-1" x1="109.73" y1="153.74" x2="109.73"/>
+    <g>
+      <path class="cls-5" d="m37.9,150.77c-25.86,50.68-3.54,108.71,38.15,126.3,33.39,14.09,76.5,2.92,99.99-28.94,20.74-28.14,22.14-66.82,3.29-97.36"/>
+      <g class="cls-3">
+        <rect class="cls-4" x="1.9" y="224.06" width="213.99" height="18.47"/>
+        <rect class="cls-4" x="2.73" y="193.1" width="213.99" height="18.47"/>
+        <rect class="cls-4" y="160.24" width="213.99" height="18.47"/>
+      </g>
+    </g>
+  </g>
+</svg>
