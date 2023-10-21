@@ -1,4 +1,5 @@
 import IconIvy from '../assets/plants/Ivy/IconIvy.svg'
+import PotIvy from '../assets/Pots/IvyPot.svg'
 import BabyIvy from '../assets/plants/Ivy/BabyIvy.svg'
 import BloomingIvy from '../assets/plants/Ivy/BloomingIvy.svg'
 import MatureIvy from '../assets/plants/Ivy/MatureIvy.svg'
@@ -9,8 +10,33 @@ import BloomingStringofPearls from '../assets/plants/StringOfPearls/BloomingStri
 import MatureStringofPearls from '../assets/plants/StringOfPearls/MatureStringofPearls.svg'
 
 import IconSnake from '../assets/plants/Snake/IconSnake.svg'
+import BabySnake from '../assets/plants/Snake/BabySnake.svg'
 import BloomingSnake from '../assets/plants/Snake/BloomingSnake.svg'
 import MatureSnake from '../assets/plants/Snake/MatureSnake.svg'
+
+import IconFern from '../assets/plants/Fern/IconFern.svg';
+import BabyFern from '../assets/plants/Fern/BabyFern.svg';
+import MatureFern from '../assets/plants/Fern/MatureFern.svg';
+import BloomingFern from '../assets/plants/Fern/BloomingFern.svg';
+import PotFern from '../assets/Pots/FernPot.svg';
+
+import IconSwirl from '../assets/plants/Swirl/IconSwirl.svg';
+import BabySwirl from '../assets/plants/Swirl/BabySwirl.svg';
+import MatureSwirl from '../assets/plants/Swirl/MatureSwirl.svg';
+import BloomingSwirl from '../assets/plants/Swirl/BloomingSwirl.svg';
+import PotSwirl from '../assets/Pots/SwirlPot.svg';
+
+import IconFlower from '../assets/plants/Flower/IconFlower.svg';
+import BabyFlower from '../assets/plants/Flower/BabyFlower.svg';
+import MatureFlower from '../assets/plants/Flower/MatureFlower.svg';
+import BloomingFlower from '../assets/plants/Flower/BloomingFlower.svg';
+import PotFlower from '../assets/Pots/FlowerPot.svg';
+
+import IconRose from '../assets/plants/Rose/IconRose.svg';
+import BabyRose from '../assets/plants/Rose/BabyRose.svg';
+import MatureRose from '../assets/plants/Rose/MatureRose.svg';
+import BloomingRose from '../assets/plants/Rose/BloomingRose.svg';
+import PotRose from '../assets/Pots/RosePot.svg';
 
 type Plant = {
     name: string;
@@ -26,7 +52,7 @@ export const Ivy: Plant = {
     name: "ivy",
     stock: IconIvy,
     decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    dead: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    dead: PotIvy,
     growing: BabyIvy,
     mature: MatureIvy,
     bloomed: BloomingIvy,
@@ -44,12 +70,12 @@ export const StringOfPearls: Plant = {
 
 export const Fern: Plant = {
     name: "fern",
-    stock: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    stock: IconFern,
     decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    dead: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    growing: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    mature: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    bloomed: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    dead: PotFern,
+    growing: BabyFern,
+    mature: MatureFern,
+    bloomed: BloomingFern,
 }
 
 export const Snake: Plant = {
@@ -57,39 +83,39 @@ export const Snake: Plant = {
     stock: IconSnake,
     decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
     dead: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    growing: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    mature: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    growing: BabySnake,
+    mature: MatureSnake,
     bloomed: BloomingSnake,
 }
 
 export const Swirl: Plant = {
     name: 'swirl',
-    stock: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    stock: IconSwirl,
     decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    dead: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    growing: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    mature: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    bloomed: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    dead: PotSwirl,
+    growing: BabySwirl,
+    mature: MatureSwirl,
+    bloomed: BloomingSwirl,
 }
 
 export const Flower: Plant = {
     name: 'flower',
-    stock: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    stock: IconFlower,
     decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    dead: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    growing: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    mature: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    bloomed: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    dead: PotFlower,
+    growing: BabyFlower,
+    mature: MatureFlower,
+    bloomed: BloomingFlower,
 }
 
 export const Rose: Plant = {
-    name: 'rose',
-    stock: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    name: 'rose bush',
+    stock: IconRose,
     decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    dead: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    growing: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    mature: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    bloomed: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    dead: PotRose,
+    growing: BabyRose,
+    mature: MatureRose,
+    bloomed: BloomingRose,
 }
 
 export const dayToPlant = (day: number) => {

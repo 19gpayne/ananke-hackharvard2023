@@ -41,31 +41,31 @@ export default function Homepage() {
                 <div className="col-span-7 mr-8">
                     <div className="flex flex-col justify-between">
                         <div className="flex flex-row justify-around">
-                            <div className="w-1/5 max-h-[24rem]">
-                                <img src={idToPlants(0, 1)} alt="Image 2" />
+                            <div className="w-1/5 max-h-[15rem]">
+                                <img src={idToPlants(1, 1)} alt="Image 2" />
                             </div>
-                            <div className="w-1/5 max-h-[24rem]">
-                                <img src={idToPlants(1, 1)} alt="Image 3" />
+                            <div className="w-1/5 max-h-[15rem]">
+                                <img src={idToPlants(0, 1)} alt="Image 3" />
                             </div>
-                            <div className="w-1/5 max-h-[24rem]">
-                                <img src={idToPlants(0, 1)} alt="Image 4" />
+                            <div className="w-1/5 max-h-[15rem]">
+                                <img src={idToPlants(2, 1)} alt="Image 4" />
                             </div>
                         </div>
-                        <div className="flex flex-row justify-between">
+                        <div className="flex flex-row justify-between items-end">
                             <div className="w-[14%]">
                                 <img src={idToPlants(3, 1)} alt="Image 5" />
                             </div>
 
                             <div className="w-[14%]">
-                                <img src={idToPlants(3, 1)} alt="Image 6" />
+                                <img src={idToPlants(5, 1)} alt="Image 6" />
                             </div>
 
                             <div className="w-[14%]">
-                                <img src={idToPlants(3, 1)} alt="Image 7" />
+                                <img src={idToPlants(4, 1)} alt="Image 7" />
                             </div>
 
                             <div className="w-[14%]">
-                                <img src={idToPlants(3, 1)} alt="Image 6" />
+                                <img src={idToPlants(6, 1)} alt="Image 6" />
                             </div>
                         </div>
                     </div>
