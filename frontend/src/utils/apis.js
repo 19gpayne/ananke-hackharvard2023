@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const axiosRequest = (url, method, json, devRes) => {
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-  if (window.location.hostname === 'localhost') { 
+  if (window.location.hostname !== 'localhost') { 
     return devRes;
   }
   else {
