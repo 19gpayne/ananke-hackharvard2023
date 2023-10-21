@@ -7,21 +7,16 @@ import os
 from flask import request
 from terra.base_client import Terra
 
-terra = Terra(api_key=os.environ["0qbR98k0kRrQ6ScLoNSbUQ-M6DeOxsbt"],
-              dev_id=os.environ["ananke-testing-Ka6sGn8znU"], secret=os.environ["TERRA_WEBHOOK_SECRET"])
+terra = Terra(api_key="sB7OFhbSXjmv660vRz6DDYjEIBvbpXuc",
+              dev_id="ananke-testing-dz4Oe3bcjY", secret="a28295b7423998ef9a2f2896f2fe45b20c9aaac85d09140f")
 
 
-def hello_terra():
-    # Print it here
-    # print(json.dumps(request.get_json(), indent = 4))
+widget_response = terra.generate_widget_session(
+    reference_id="USER ID IN YOUR APP",
+    providers=["GOOGLE"],
+    auth_success_redirect_url="https://success.url",
+    auth_failure_redirect_url="https://failure.url",
+    language="en"
+).get_parsed_response()
 
-    # You can directly use this to handle a terra webhook:
-    response = terra.handle_flask_webhook(request)
-
-    return flask.Response("Yay Terra is awesome",  http.HTTPStatus.OK)
-
-
-def setup(app: flask.Flask):
-    bp = flask.Blueprint("sample", __name__, "")
-    bp.add_url_rule("/hello", view_func=hello_terra, methods=["POST"])
-    app.register_blueprint(bp)
+print(widget_response)
