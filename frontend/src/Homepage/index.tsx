@@ -4,9 +4,8 @@ import NavBar from '../Nav';
 import {LIGHT_COLOR, PRIMARY_COLOR, SECONDARY_COLOR} from '../utils/colors';
 import { gardenReportData } from './devData';
 import { axiosRequest } from '../utils/apis';
-import { idToPlants, strengthToColor } from '../utils/plants';
-import pottedPlant1 from '../assets/pottedPlant1.svg';
-import hangingPlant1 from '../assets/hangingPlant1.svg';
+import { dayToPlant, idToPlants, strengthToColor } from '../utils/plants';
+import { capitalizeFirstLetter } from '../utils/functions';
 
 type WorkoutReport = {
     id: number,
@@ -17,6 +16,7 @@ type WorkoutReport = {
 export default function Homepage() {
     const userId = "";
     const [report, setReport] = useState<WorkoutReport[]>([]);
+    const [today, setToday] = useState<WorkoutReport | null>(null);
     const getReport = async (id: string) => {
         const reportData = await axiosRequest(
             'http://localhost:8080/getWorkoutData', 
@@ -25,6 +25,9 @@ export default function Homepage() {
             gardenReportData
         )
         setReport(reportData);
+        if (reportData.map((d: WorkoutReport) => moment(d.date).format('YYYY-MM-DD')).includes(moment().format('YYYY-MM-DD'))) {
+            setToday(reportData.find((d: WorkoutReport) => moment(d.date).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD')) || null)
+        }
     }
 
     useEffect(() => {
@@ -36,15 +39,15 @@ export default function Homepage() {
             <NavBar />
             <div className="grid grid-cols-9 mx-6">
                 <div className="col-span-7 mr-8">
-                    <div className="flex flex-col justify-between" style={{height: "89vh"}}>
+                    <div className="flex flex-col justify-between">
                         <div className="flex flex-row justify-around">
-                            <div className="w-1/5">
+                            <div className="w-1/5 max-h-[24rem]">
                                 <img src={idToPlants(0, 1)} alt="Image 2" />
                             </div>
-                            <div className="w-1/5">
+                            <div className="w-1/5 max-h-[24rem]">
                                 <img src={idToPlants(1, 1)} alt="Image 3" />
                             </div>
-                            <div className="w-1/5">
+                            <div className="w-1/5 max-h-[24rem]">
                                 <img src={idToPlants(0, 1)} alt="Image 4" />
                             </div>
                         </div>
@@ -68,10 +71,21 @@ export default function Homepage() {
                     </div>
                 </div>
                 <div className="col-span-2 mt-[-8.5vh]">
-                    <div className="rounded-3xl p-3 text-center mb-6" style={{backgroundColor: LIGHT_COLOR}}>
+                    <div className="rounded-3xl p-3 text-center mb-4" style={{backgroundColor: LIGHT_COLOR}}>
                         <b>Today's Bloom</b>
-                        <br /><br />
-                        <div>Nothing sprouting yet, get some sunshine!</div>
+                        <div className="grid grid-cols-3 justify-items-center mt-2">
+                            <p className="col-span-2">
+                                {today ? 
+                                    <>
+                                        You've been working! <b>{capitalizeFirstLetter(dayToPlant(moment().day()))}</b> plant is sprouting
+                                    </>
+                                    :
+                                    <>Nothing sprouting yet! Get some sunshine to help grow your <b>{dayToPlant(moment().day())}</b> plant</>
+                                }
+                            </p>
+                            <img src={idToPlants(moment().day(), -1)} className="w-[3rem] h-[3rem] rounded"/>
+                            <button></button>
+                        </div>
                     </div>
                     <>
                         <div className="rounded-t-3xl p-3 text-white text-center" style={{backgroundColor: SECONDARY_COLOR}}>

@@ -1,5 +1,6 @@
 import {useLocation} from 'react-router-dom';
 import woodpattern3 from '../assets/woodpattern3.png'
+import logo from '../assets/Logo.svg'
 import "./index.css"
 
 export default function NavBar() {
@@ -7,10 +8,10 @@ export default function NavBar() {
     return (
         <div className="m-4 ml-6 mb-0">
             <nav 
-                className="text-white flex gap-8 text-xl w-fit p-4 rounded nav--background-image" 
+                className="text-white flex gap-8 text-xl w-fit p-2 rounded nav--background-image flex items-center" 
                 style={{backgroundImage: `url(${woodpattern3})`}}
             >
-                <div>LOGO HERE</div>
+                <div className="p-2 bg-white rounded-lg"><img src={logo} className="w-8"/></div>
                 <a href="/" className={pathname === "/" ? "nav--link-active" : ""}>My Garden</a>
                 <a href="/friends" className={pathname === "/friends" ? "nav--link-active" : ""}>Social Butterfly</a>
                 <a href="/profile" className={pathname === "/profile" ? "nav--link-active" : ""}>Profile</a>
