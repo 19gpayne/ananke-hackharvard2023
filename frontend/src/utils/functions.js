@@ -4,3 +4,7 @@ export function capitalizeFirstLetter(word) {
     }
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
+
+export function getInitials(word) {
+    return word.split(" ")[0].charAt(0) + word.split(" ")[1].charAt(0);
+}

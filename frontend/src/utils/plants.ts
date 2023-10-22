@@ -8,11 +8,13 @@ import IconStringofPearls from '../assets/plants/StringOfPearls/IconStringofPear
 import BabyStringofPearls from '../assets/plants/StringOfPearls/BabyStringofPearls.svg'
 import BloomingStringofPearls from '../assets/plants/StringOfPearls/BloomingStringofPearls.svg'
 import MatureStringofPearls from '../assets/plants/StringOfPearls/MatureStringofPearls.svg'
+import PotStringofPearls from '../assets/Pots/PearlPot.svg'
 
 import IconSnake from '../assets/plants/Snake/IconSnake.svg'
 import BabySnake from '../assets/plants/Snake/BabySnake.svg'
 import BloomingSnake from '../assets/plants/Snake/BloomingSnake.svg'
 import MatureSnake from '../assets/plants/Snake/MatureSnake.svg'
+import PotSnake from '../assets/Pots/SnakePot.svg'
 
 import IconFern from '../assets/plants/Fern/IconFern.svg';
 import BabyFern from '../assets/plants/Fern/BabyFern.svg';
@@ -42,7 +44,6 @@ type Plant = {
     name: string;
     stock: string;
     dead: string;
-    decaying: string;
     growing: string;
     mature: string;
     bloomed: string;
@@ -51,7 +52,6 @@ type Plant = {
 export const Ivy: Plant = {
     name: "ivy",
     stock: IconIvy,
-    decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
     dead: PotIvy,
     growing: BabyIvy,
     mature: MatureIvy,
@@ -61,8 +61,8 @@ export const Ivy: Plant = {
 export const StringOfPearls: Plant = {
     name: "string of pearls",
     stock: IconStringofPearls,
-    decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    dead: 'https://i.imgur.com/8j6Q0Jg.jpg',
+
+    dead: PotStringofPearls,
     growing: BabyStringofPearls,
     mature: MatureStringofPearls,
     bloomed: BloomingStringofPearls,
@@ -71,7 +71,6 @@ export const StringOfPearls: Plant = {
 export const Fern: Plant = {
     name: "fern",
     stock: IconFern,
-    decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
     dead: PotFern,
     growing: BabyFern,
     mature: MatureFern,
@@ -81,8 +80,7 @@ export const Fern: Plant = {
 export const Snake: Plant = {
     name: "snake",
     stock: IconSnake,
-    decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
-    dead: 'https://i.imgur.com/8j6Q0Jg.jpg',
+    dead: PotSnake,
     growing: BabySnake,
     mature: MatureSnake,
     bloomed: BloomingSnake,
@@ -91,7 +89,6 @@ export const Snake: Plant = {
 export const Swirl: Plant = {
     name: 'swirl',
     stock: IconSwirl,
-    decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
     dead: PotSwirl,
     growing: BabySwirl,
     mature: MatureSwirl,
@@ -101,7 +98,6 @@ export const Swirl: Plant = {
 export const Flower: Plant = {
     name: 'flower',
     stock: IconFlower,
-    decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
     dead: PotFlower,
     growing: BabyFlower,
     mature: MatureFlower,
@@ -111,7 +107,6 @@ export const Flower: Plant = {
 export const Rose: Plant = {
     name: 'rose bush',
     stock: IconRose,
-    decaying: 'https://i.imgur.com/8j6Q0Jg.jpg',
     dead: PotRose,
     growing: BabyRose,
     mature: MatureRose,
@@ -154,13 +149,11 @@ export const strengthToColor = (strength: number) => {
 const strengthToPlantStage = (strength: number) => {
     if (strength < 0) {
         return 'stock'
-    } else if (strength < 0.2) {
-        return 'decaying'
-    } else if (strength < 0.4) {
+    } else if (strength < 0.25) {
         return 'dead'
-    } else if (strength < 0.6) {
+    } else if (strength < 0.5) {
         return 'growing'
-    } else if (strength < 0.8) {
+    } else if (strength < 0.75) {
         return 'mature'
     } else {
         return 'bloomed'
@@ -171,8 +164,6 @@ const getPlantState = (state: string, plant: Plant) => {
     switch (state) {
         case 'stock':
             return plant.stock;
-        case 'decaying':
-            return plant.decaying;
         case 'dead':
             return plant.dead;
         case 'growing':
@@ -182,7 +173,7 @@ const getPlantState = (state: string, plant: Plant) => {
         case 'bloomed':
             return plant.bloomed;
         default:
-            return plant.decaying;
+            return plant.dead;
     }
 }
 
