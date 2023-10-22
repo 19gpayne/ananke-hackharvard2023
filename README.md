@@ -1,5 +1,5 @@
-# Ananke - The fitness app for the average Joe
-** Built at HackHarvard 2023 **
+# 🌱Ananke - The fitness app for the average Joe💪
+**Built at HackHarvard 2023**
 
 ![Logo](frontend/src/assets/Logo_padding.svg)
 
