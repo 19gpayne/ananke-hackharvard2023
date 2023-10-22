@@ -4,7 +4,7 @@ import NavBar from '../Nav';
 import {LIGHT_COLOR, PRIMARY_COLOR, SECONDARY_COLOR} from '../utils/colors';
 import { gardenReportData, workoutReportData } from './devData';
 import { axiosRequest } from '../utils/apis';
-import { dayToPlant, idToPlants, strengthToColor } from '../utils/plants';
+import { dayToPlant, idToPlants, mondaySundayWeekNumberConversion, strengthToColor } from '../utils/plants';
 import { capitalizeFirstLetter } from '../utils/functions';
 import ActionButton from '../Components/Buttons/ActionButton';
 import Modal from '../Components/Modal';
@@ -69,27 +69,27 @@ export default function Homepage() {
                     <NavBar />
                     <div className="flex flex-col justify-between" style={{width: 'calc(100% - 32px)'}}>
                         <div className="flex flex-row justify-around">
-                            <div className="w-1/5 max-h-[20rem]">
-                                <img src={idToPlants(1, report[0]?.Intensity ?? 0)} alt="Image 2" />
+                            <div className="w-1/5 max-h-[21rem]">
+                                <img src={idToPlants(1, report[1]?.Intensity ?? 0)} alt="Image 2" />
                             </div>
-                            <div className="w-1/5 max-h-[20rem]">
-                                <img src={idToPlants(0, report[2]?.Intensity ?? 0)} alt="Image 3" />
+                            <div className="w-1/5 max-h-[21rem]">
+                                <img src={idToPlants(3, report[3]?.Intensity ?? 0)} alt="Image 3" />
                             </div>
-                            <div className="w-1/5 max-h-[20rem]">
-                                <img src={idToPlants(2, report[4]?.Intensity ?? 0)} alt="Image 4" />
+                            <div className="w-1/5 max-h-[21rem]">
+                                <img src={idToPlants(5, report[5]?.Intensity ?? 0)} alt="Image 4" />
                             </div>
                         </div>
                         <div className="flex flex-row justify-between items-end">
                             <div className="w-[14%]">
-                                <img src={idToPlants(3, report[1]?.Intensity ?? 0)} alt="Image 5" />
+                                <img src={idToPlants(0, report[0]?.Intensity ?? 0)} alt="Image 5" />
                             </div>
 
                             <div className="w-[14%]">
-                                <img src={idToPlants(5, report[3]?.Intensity ?? 0)} alt="Image 6" />
+                                <img src={idToPlants(2, report[2]?.Intensity ?? 0)} alt="Image 6" />
                             </div>
 
                             <div className="w-[14%]">
-                                <img src={idToPlants(4, report[5]?.Intensity ?? 0)} alt="Image 7" />
+                                <img src={idToPlants(4, report[4]?.Intensity ?? 0)} alt="Image 7" />
                             </div>
 
                             <div className="w-[14%]">
@@ -105,13 +105,13 @@ export default function Homepage() {
                             <p className="col-span-2">
                                 {today ? 
                                     <>
-                                        You've been working! <b>{capitalizeFirstLetter(dayToPlant(moment().day()))}</b> plant is sprouting
+                                        You've been working! <b>{capitalizeFirstLetter(dayToPlant(mondaySundayWeekNumberConversion(moment().day())))}</b> plant is sprouting
                                     </>
                                     :
-                                    <>Nothing sprouting yet! Get out there to grow your <b>{dayToPlant(moment().day())}</b> plant</>
+                                    <>Nothing sprouting yet! Get out there to grow your <b>{dayToPlant(mondaySundayWeekNumberConversion(moment().day()))}</b> plant</>
                                 }
                             </p>
-                            <img src={idToPlants(moment().day(), -1)} className="w-[3rem] h-[3rem] rounded"/>
+                            <img src={idToPlants(mondaySundayWeekNumberConversion(moment().day()), -1)} className="w-[3rem] h-[3rem] rounded"/>
                         </div>
                         <div className="w-full mt-2"><ActionButton label={"See Workouts"} onClick={() => {setShowModal(true)}} /></div>
                     </div>
@@ -123,7 +123,7 @@ export default function Homepage() {
                             {report.map(d => {
                                 return (
                                     <div key={d.id} className="flex gap-2 ml-3 mb-3 items-center">
-                                        <img src={idToPlants(moment(d.date).day(), -1)} className="w-[3rem] h-[3rem] p-1 rounded" style={{border: `3px solid ${strengthToColor(d.Intensity)}`}}/>
+                                        <img src={idToPlants(mondaySundayWeekNumberConversion(moment(d.date).day()), -1)} className="w-[3rem] h-[3rem] p-1 rounded" style={{border: `3px solid ${strengthToColor(d.Intensity)}`}}/>
                                         {moment(d.date).format('dddd, MMM Do')}
                                     </div>
                                 )

@@ -2,12 +2,12 @@ export const gardenReportData = [
     {
         id: 0,
         date: '2023-10-16',
-        Intensity: 0.1,
+        Intensity: 0.74,
     },
     {
         id: 1,
         date: '2023-10-17',
-        Intensity: 0.73,
+        Intensity: 0.1,
     },
     {
         id: 2,
@@ -17,17 +17,17 @@ export const gardenReportData = [
     {
         id: 3,
         date: '2023-10-19',
-        Intensity: 0.12,
+        Intensity: 0.77,
     },
     {
         id: 4,
         date: '2023-10-20',
-        Intensity: 0.90,
+        Intensity: 0.34,
     },
     {
         id: 5,
         date: '2023-10-21',
-        Intensity: 0.34,
+        Intensity: 1,
     },
 ]
 

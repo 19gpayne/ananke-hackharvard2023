@@ -119,21 +119,41 @@ export const Rose: Plant = {
     bloomed: BloomingRose,
 }
 
-//Returns the correct plant based on the day of the week
+export const idToPlants = (id: number, strength: number) => {
+    switch (id) {
+        case 0:
+            return getPlantState(strengthToPlantStage(strength), Snake)
+        case 1:
+            return getPlantState(strengthToPlantStage(strength), StringOfPearls)
+        case 2:
+            return getPlantState(strengthToPlantStage(strength), Flower)
+        case 3:
+            return getPlantState(strengthToPlantStage(strength), Ivy)
+        case 4:
+            return getPlantState(strengthToPlantStage(strength), Swirl)
+        case 5:
+            return getPlantState(strengthToPlantStage(strength), Fern)
+        case 6:
+            return getPlantState(strengthToPlantStage(strength), Rose)
+        default:
+            return getPlantState(strengthToPlantStage(strength), Ivy)
+    }
+}
+
 export const dayToPlant = (day: number) => {
     switch (day) {
         case 0:
-            return Ivy.name;
+            return Snake.name;
         case 1:
             return StringOfPearls.name;
         case 2:
-            return Fern.name;
+            return Flower.name;
         case 3:
-            return Snake.name;
+            return Ivy.name;
         case 4:
             return Swirl.name;
         case 5:
-            return Flower.name;
+            return Fern.name;
         case 6:
             return Rose.name;
         default:
@@ -141,7 +161,14 @@ export const dayToPlant = (day: number) => {
     }
 }
 
-//Returns a color based on the intensity of a workout
+export const mondaySundayWeekNumberConversion = (day: number) => {
+    if (day === 0) {
+        return 6
+    } else {
+        return day - 1
+    }
+}
+
 export const strengthToColor = (strength: number) => {
     if (strength < 0.25) {
         return 'darkred'
@@ -198,27 +225,5 @@ export const getStatusIcon = (state: string) => {
             return growing;
         case 'Decaying':
             return decaying;
-    }
-}
-
-//Returns the image of a plant based on a plant id and strength of workout
-export const idToPlants = (id: number, strength: number) => {
-    switch (id) {
-        case 0:
-            return getPlantState(strengthToPlantStage(strength), Ivy)
-        case 1:
-            return getPlantState(strengthToPlantStage(strength), StringOfPearls)
-        case 2:
-            return getPlantState(strengthToPlantStage(strength), Fern)
-        case 3:
-            return getPlantState(strengthToPlantStage(strength), Snake)
-        case 4:
-            return getPlantState(strengthToPlantStage(strength), Swirl)
-        case 5:
-            return getPlantState(strengthToPlantStage(strength), Flower)
-        case 6:
-            return getPlantState(strengthToPlantStage(strength), Rose)
-        default:
-            return getPlantState(strengthToPlantStage(strength), Ivy)
     }
 }
