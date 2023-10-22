@@ -35,8 +35,8 @@ export default function Homepage() {
     const [showModal, setShowModal] = useState<boolean>(false);
 
     useEffect(() => {
-        const apiUrl = 'https://6b62-67-134-204-12.ngrok.io/get_json'; 
-        const choiceUrl = 'https://6b62-67-134-204-12.ngrok.io/get_options';
+        const apiUrl = 'https://d544-67-134-204-12.ngrok.io/get_json'; 
+        const choiceUrl = 'https://d544-67-134-204-12.ngrok.io/get_options';
         axiosRequest(apiUrl, "GET", {}, gardenReportData)
           .then((response: any) => {
             console.log(JSON.parse(response))
