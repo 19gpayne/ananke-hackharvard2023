@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import NavBar from '../Nav';
 import {BLUE, DARK_PRIMARY_COLOR, LIGHT_COLOR, PRIMARY_COLOR, SECONDARY_COLOR} from '../utils/colors';
 import { axiosRequest } from '../utils/apis';
-import { devFriends } from './devData';
+import { devChats, devFriends } from './devData';
 import {GiWateringCan} from 'react-icons/gi';
 import {PiButterflyDuotone} from 'react-icons/pi';
+import { getInitials } from '../utils/functions';
 
-enum GardenStatus {
+export enum GardenStatus {
     DEAD = 'dead',
     GROWING = 'growing',
     BLOOMING = 'blooming',
@@ -29,11 +30,10 @@ type Chat = {
 
 export default function Social() {   
     const [friends, setFriends] = useState<Friend[]>([]);
-    const [chats, setChats] = useState<Chat[]>([]); 
+    const [chats, setChats] = useState<Chat[]>(devChats as Chat[]); 
 
     const fetchFriends = async () => {
-        const f = await axiosRequest('http://localhost:8080/friends', "GET", {userId: null}, devFriends);
-        setFriends(f)
+        setFriends(devFriends as Friend[])
     }
 
     useEffect(() => {
@@ -70,12 +70,12 @@ export default function Social() {
                         <b>Blossom Chats</b>
                     </div>
                     <div className="rounded-b-3xl px-3 py-5 overflow-scroll flex flex-col gap-4" style={{backgroundColor: LIGHT_COLOR, height: 'calc(100vh - 84px)'}}>
-                        {[1, 2, 3, 4, 5, 6, 7, 7, 8, 8, 9].map((chat) => {
+                        {chats.map((chat) => {
                             return (
                                 <div className="rounded-lg bg-white p-3">
-                                    <span className="rounded text-white text-center w-min p-1 mr-1" style={{backgroundColor: SECONDARY_COLOR}}>GP</span>
-                                    <span>Gwen P.</span>
-                                    <p className="mt-3">Sending lots of love!!</p>
+                                    <span className="rounded text-white text-center w-min p-1 mr-3" style={{backgroundColor: SECONDARY_COLOR}}>{getInitials(chat.sender)}</span>
+                                    <span>{chat.sender}</span>
+                                    <p className="mt-3">{chat.message}</p>
                                 </div>
                             )
                         })}

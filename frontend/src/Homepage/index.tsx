@@ -8,7 +8,6 @@ import { dayToPlant, idToPlants, strengthToColor } from '../utils/plants';
 import { capitalizeFirstLetter } from '../utils/functions';
 import ActionButton from '../Components/Buttons/ActionButton';
 import Modal from '../Components/Modal';
-import axios from 'axios';
 
 type WorkoutReport = {
     id: number,
@@ -23,9 +22,13 @@ export default function Homepage() {
 
     useEffect(() => {
         const apiUrl = 'https://f58f-67-134-204-12.ngrok.io/get_json'; 
+        setReport([...gardenReportData, {id: 6, date: moment().format('YYYY-MM-DD'), Intensity: 0}]);
         axiosRequest(apiUrl, "GET", {}, gardenReportData)
           .then((response: any) => {
-            setReport([{id: 0, ...response.data}]);
+            console.log(JSON.parse(response))
+            if (JSON.parse(response) !== undefined) {
+                setReport([...gardenReportData, {id: 6, ...JSON.parse(response)}]);
+            }
           })
           .catch((error: any) => {
             console.error('Error fetching JSON data:', error);
@@ -40,30 +43,30 @@ export default function Homepage() {
                     <div className="flex flex-col justify-between">
                         <div className="flex flex-row justify-around">
                             <div className="w-1/5 max-h-[15rem]">
-                                <img src={idToPlants(1, 1)} alt="Image 2" />
+                                <img src={idToPlants(1, report[0]?.Intensity ?? 0)} alt="Image 2" />
                             </div>
                             <div className="w-1/5 max-h-[15rem]">
-                                <img src={idToPlants(0, 1)} alt="Image 3" />
+                                <img src={idToPlants(0, report[2]?.Intensity ?? 0)} alt="Image 3" />
                             </div>
                             <div className="w-1/5 max-h-[15rem]">
-                                <img src={idToPlants(2, 1)} alt="Image 4" />
+                                <img src={idToPlants(2, report[4]?.Intensity ?? 0)} alt="Image 4" />
                             </div>
                         </div>
                         <div className="flex flex-row justify-between items-end">
                             <div className="w-[14%]">
-                                <img src={idToPlants(3, 1)} alt="Image 5" />
+                                <img src={idToPlants(3, report[1]?.Intensity ?? 0)} alt="Image 5" />
                             </div>
 
                             <div className="w-[14%]">
-                                <img src={idToPlants(5, 1)} alt="Image 6" />
+                                <img src={idToPlants(5, report[3]?.Intensity ?? 0)} alt="Image 6" />
                             </div>
 
                             <div className="w-[14%]">
-                                <img src={idToPlants(4, 1)} alt="Image 7" />
+                                <img src={idToPlants(4, report[5]?.Intensity ?? 0)} alt="Image 7" />
                             </div>
 
                             <div className="w-[14%]">
-                                <img src={idToPlants(6, 1)} alt="Image 6" />
+                                <img src={idToPlants(6, report[6]?.Intensity ?? 0)} alt="Image 6" />
                             </div>
                         </div>
                     </div>
@@ -93,7 +96,7 @@ export default function Homepage() {
                             {report.map(d => {
                                 return (
                                     <div key={d.id} className="flex gap-2 ml-3 mb-3 items-center">
-                                        <img src={idToPlants(d.id, -1)} className="w-[3rem] h-[3rem] rounded" style={{border: `3px solid ${strengthToColor(d.Intensity)}`}}/>
+                                        <img src={idToPlants(moment(d.date).day(), -1)} className="w-[3rem] h-[3rem] rounded" style={{border: `3px solid ${strengthToColor(d.Intensity)}`}}/>
                                         {moment(d.date).format('dddd, MMM Do')}
                                     </div>
                                 )
