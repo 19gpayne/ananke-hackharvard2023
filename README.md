@@ -20,7 +20,7 @@ Join Ananke and make the strongest competitor always be yourself.
 ## 🛠️ Hackers
 - 👩🏼‍💻 Rhyme Dochtermann | CS @ Northeastern
 - 👩🏻‍💻 Gwen Payne | CS @ Northeastern
-- 👨🏻‍💻 Max Hecker | Physics @ Göttingen
+- 👨🏻‍💻 Max Hecker | Physics @ Goettingen and Milan
 - 👨🏼‍💻 Justus Beck | CS @ LMU Munich
 
 ## 👀 What does Ananke look like?
