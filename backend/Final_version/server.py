@@ -14,6 +14,8 @@ headers = {
     "x-api-key": "0qbR98k0kRrQ6ScLoNSbUQ-M6DeOxsbt"
 }
 
+# Parsing the ODIN Response and extract just the key data
+
 
 def parse_gpt_response(response):
     # Split the response by lines
@@ -23,7 +25,7 @@ def parse_gpt_response(response):
     if len(lines) != 3:
         raise ValueError("The response does not have the expected format.")
 
-    # Define the speed mapping
+    # categories
     speed_mapping = {
         '1': 'SLOW',
         '2': 'MED',
@@ -33,10 +35,8 @@ def parse_gpt_response(response):
     parsed_data = {}
 
     for line in lines:
-        # Split each line by comma
         parts = line.split(",")
 
-        # Check if each line has the expected number of parts
         if len(parts) != 3:
             raise ValueError(
                 f"The line '{line}' does not have the expected format.")
@@ -59,14 +59,17 @@ def parse_gpt_response(response):
 logging.basicConfig(level=logging.INFO)
 _LOGGER = logging.getLogger("app")
 
+# initializing terra
 terra = Terra(api_key=headers['x-api-key'], dev_id=headers['dev-id'],
               secret="f07f85d267760a075515f9aa3f96ac8b5c573f5213f20d35")
 
 app = flask.Flask(__name__)
-CORS(app)
+CORS(app)  # Avoiding Cors errors
 
 processed_Jason_data = None
 answer_Jason_data = None
+
+# Receiving ODIN and API responses and print it to Json. Subsequently it is passed to the frontend by http request
 
 
 @app.route("/consumeTerraWebhook", methods=["POST"])
@@ -82,13 +85,13 @@ def consume_terra_webhook() -> flask.Response:
     verified = terra.check_terra_signature(
         request.get_data().decode("utf-8"), request.headers['terra-signature'])
     if verified:
-        if 'data' in body:
+        if 'data' in body:  # API case
             print(body)
             df = parse_Workout_Data(body)
             print(df)
             intens, processed_Jason_data = intensity_calculation(df)
             print(f"Intensity: {intens}")
-        elif 'response' in body:
+        elif 'response' in body:  # ODIN response case
             answer = parse_gpt_response(body['response'])
             answer_Jason_data = json.dumps(answer)
             print(answer)
@@ -99,6 +102,8 @@ def consume_terra_webhook() -> flask.Response:
     else:
         return flask.Response(status=403)
 
+# Http request for workout suggestions
+
 
 @app.route('/get_options', methods=['GET'])
 def get_options():
@@ -108,6 +113,8 @@ def get_options():
     else:
         return flask.Response("No processed JSON data available", status=404)
 
+# http request for intensity-score
+
 
 @app.route('/get_json', methods=['GET'])
 def get_json():
@@ -116,6 +123,8 @@ def get_json():
         return flask.jsonify(processed_Jason_data)
     else:
         return flask.Response("No processed JSON data available", status=404)
+
+# http request to shutdown the server
 
 
 @app.route('/shutdown', methods=['POST'])
