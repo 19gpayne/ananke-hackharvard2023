@@ -1,5 +1,5 @@
 # 🌱Ananke - The fitness app for the average Joe💪
-**Built at HackHarvard 2023**
+**Built at HackHarvard 2023** (see more [here](https://devpost.com/software/ananke))
 
 ![Logo](frontend/src/assets/Logo_padding.svg)
 
@@ -23,3 +23,5 @@ Join Ananke and make the strongest competitor always be yourself.
 - 👨🏻‍💻 Max Hecker | Physics @ Göttingen
 - 👨🏼‍💻 Justus Beck | CS @ LMU Munich
 
+## 👀 What does Ananke look like?
+![An image of our frontend](frontend/src/assets/gallery.jpg)
