@@ -9,19 +9,19 @@ export const devFriends = [
         id: "123",
         name: 'John Doe',
         icon: pinkButterfly,
-        status: 'growing',
+        status: 'Growing',
     },
     {
         id: "12",
         name: 'Joe Stubi',
         icon: blueButterfly,
-        status: 'thriving',
+        status: 'Thriving',
     },
     {
         id: "1",
         name: 'Mac Tubi',
         icon: purpleButterfly,
-        status: 'blooming',
+        status: 'Blooming',
     },
 ]
 

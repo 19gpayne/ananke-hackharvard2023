@@ -35,7 +35,7 @@ export default function Homepage() {
 
     useEffect(() => {
         const apiUrl = 'https://f58f-67-134-204-12.ngrok.io/get_json'; 
-        const choiceUrl = 'https://75ce-67-134-204-12.ngrok.io/get_options';
+        const choiceUrl = 'https://abda-67-134-204-12.ngrok.iogit/get_options';
         setReport([...gardenReportData, {id: 6, date: moment().format('YYYY-MM-DD'), Intensity: 0}]);
         axiosRequest(apiUrl, "GET", {}, gardenReportData)
           .then((response: any) => {
@@ -65,6 +65,15 @@ export default function Homepage() {
     return (
         <div className="w-full absolute left-0 top-0 bottom-0" style={{backgroundColor: PRIMARY_COLOR}}>
             <NavBar />
+                                    <div>{suggestions ? 
+                        <div>
+                           <b> {suggestions.easy?.distance} </b>
+                           <b>{suggestions.easy?.pace} </b>
+                            </div> :
+                            <div>
+
+                                </div>
+                            }</div>
             <div className="grid grid-cols-9 mx-6">
                 <div className="col-span-7 mr-8">
                     <div className="flex flex-col justify-between">
@@ -133,15 +142,6 @@ export default function Homepage() {
                 </div>
                 {showModal && 
                     <Modal onClose={() => setShowModal(false)}>
-                        <div>{suggestions ? 
-                        <div>
-                            {suggestions.easy?.distance}
-                            {suggestions.easy?.pace}
-                            </div> :
-                            <div>
-
-                                </div>
-                            }</div>
                     </Modal>
                 }
             </div>

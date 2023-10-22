@@ -51,15 +51,15 @@ export default function Social() {
                         </div>
                         {friends.map((friend) => {
                             return (
-                                <div key={friend.id} className="flex justify-between items-center mt-4">
+                                <div key={friend.id} className="flex justify-between items-center mt-4 p-2 rounded" style={{backgroundColor: 'white'}}>
                                     <div className="flex items-center">
                                         <img src={friend.icon} className="w-16 mr-3" alt="" />
                                         {/* <img src={pinkButterfly} className='w-[8%]' /> */}
-                                        <span className="text-xl ml-3">{friend.name}</span>
+                                        <span className="text-xl ml-3 font-medium">{friend.name}</span>
                                     </div>
                                     
-                                    <span className="text-xl">Garden Status: {friend.status}</span>
-                                    <span className="text-xl">Streak: 8 days</span>
+                                    <span className="text-base">Garden Status: {friend.status}</span>
+                                    <span className="text-base">Streak: 8 days</span>
                                     <button className="w-16"><GiWateringCan size={28} className="rounded-lg w-full" style={{backgroundColor: BLUE}}/></button>
                                 </div>
                             )
