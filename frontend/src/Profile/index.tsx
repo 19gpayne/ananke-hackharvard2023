@@ -21,9 +21,10 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className="col-span-2">
-                        <div className="rounded-t-3xl p-3" style={{height: 'calc(100vh - 84px)'}}>
-                            <b className="text-orange text-left text-2xl">My Wearables</b>
-                            <div className="rounded-full px-3 py-5 grid grid-cols-3 mt-3 mb-7 justify-items-center" style={{backgroundColor: LIGHT_COLOR, height: 'calc((100vh - 84px)/6)'}}>
+                        <div className="rounded-t-3xl p-3 text-white text-center text-2xl mt-4" style={{backgroundColor: SECONDARY_COLOR}}>
+                            <b>Wearables</b>
+                        </div>
+                        <div className="rounded-b-3xl px-3 py-5 overflow-scroll flex flex-col gap-4" style={{backgroundColor: LIGHT_COLOR, height: 'calc(100vh - 84px)'}}>
                             <div className="mt-4 mr-20 col-span-1">
                                 <img src={fitbit} className="w-20"/>
                             </div>
@@ -34,20 +35,7 @@ export default function Profile() {
                             <button className="mt-8 ml-20 col-span-1">
                                 <FaTrash size={40}/>
                             </button>
-                            </div>
-                            <div className="rounded-full px-3 py-5 grid grid-cols-3 mt-3 justify-items-center" style={{backgroundColor: LIGHT_COLOR, height: 'calc((100vh - 84px)/6)'}}>
-                            <div className="mt-4 mr-20 col-span-1">
-                                <img src={apple} className="w-20"/>
-                            </div>
-                            <b className="col-span-1 text-xl mt-7 font-medium">
-                                Apple Watch Series 9 <br />
-                                <b className="text-base font-normal"> Last synced 10/8 </b>
-                            </b>
-                            <button className="mt-8 ml-20 col-span-1">
-                                <FaTrash size={40}/>
-                            </button>
-                            </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

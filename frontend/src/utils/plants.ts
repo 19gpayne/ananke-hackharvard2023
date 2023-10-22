@@ -116,21 +116,21 @@ export const Rose: Plant = {
 export const dayToPlant = (day: number) => {
     switch (day) {
         case 0:
-            return Snake.name;
-        case 1:
             return Ivy.name;
-        case 2:
-            return Swirl.name;
-        case 3:
+        case 1:
             return StringOfPearls.name;
-        case 4:
-            return Flower.name;
-        case 5:
+        case 2:
             return Fern.name;
+        case 3:
+            return Snake.name;
+        case 4:
+            return Swirl.name;
+        case 5:
+            return Flower.name;
         case 6:
             return Rose.name;
         default:
-            return Snake.name;
+            return Ivy.name;
     }
 }
 

@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import NavBar from '../Nav';
 import {BLUE, DARK_PRIMARY_COLOR, LIGHT_COLOR, PRIMARY_COLOR, SECONDARY_COLOR} from '../utils/colors';
-import { axiosRequest } from '../utils/apis';
 import { devChats, devFriends } from './devData';
 import {GiWateringCan} from 'react-icons/gi';
-import {PiButterflyDuotone} from 'react-icons/pi';
 import { getInitials } from '../utils/functions';
-import pinkButterfly from '../assets/Butterflies/PinkButterfly.svg'
+import ActionButton from '../Components/Buttons/ActionButton';
 
 export enum GardenStatus {
     DEAD = 'dead',
@@ -45,13 +43,13 @@ export default function Social() {
             <div className="grid grid-cols-9 mx-6">
                 <div className="col-span-7 mr-8">
                     <NavBar />
-                    <div className="rounded-3xl mt-4 p-4 h-full mb-2" style={{backgroundColor: LIGHT_COLOR}}>
+                    <div className="rounded-3xl mt-4 p-4 mb-2" style={{backgroundColor: LIGHT_COLOR, height: 'calc(100vh - 112px)'}}>
                         <div className="w-full text-right mb-2">
-                            <button className="text-white rounded-lg p-2 font-semibold" style={{backgroundColor: DARK_PRIMARY_COLOR}}>+ Add Friends</button>
+                            <ActionButton label="+ Add Friends" onClick={() => {}} />
                         </div>
                         {friends.map((friend) => {
                             return (
-                                <div key={friend.id} className="flex justify-between items-center mt-4 p-2 rounded" style={{backgroundColor: 'white'}}>
+                                <div key={friend.id} className="flex justify-between items-center mt-4 p-2 rounded-lg" style={{backgroundColor: 'white'}}>
                                     <div className="flex items-center">
                                         <img src={friend.icon} className="w-16 mr-3" alt="" />
                                         {/* <img src={pinkButterfly} className='w-[8%]' /> */}

@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import moment from 'moment';
 import NavBar from '../Nav';
 import {LIGHT_COLOR, PRIMARY_COLOR, SECONDARY_COLOR} from '../utils/colors';
-import { gardenReportData } from './devData';
+import { gardenReportData, workoutReportData } from './devData';
 import { axiosRequest } from '../utils/apis';
 import { dayToPlant, idToPlants, strengthToColor } from '../utils/plants';
 import { capitalizeFirstLetter } from '../utils/functions';
 import ActionButton from '../Components/Buttons/ActionButton';
 import Modal from '../Components/Modal';
+import {MdOutlineNordicWalking, MdOutlineDirectionsWalk, MdOutlineDirectionsRun} from 'react-icons/md';
 
 type WorkoutReport = {
     id: number,
@@ -17,7 +18,7 @@ type WorkoutReport = {
 
 type WorkoutChoice = {
     Distance: number;
-    Pace: number;
+    Pace: string;
 }
 
 type WorkoutSuggestions = {
@@ -34,9 +35,8 @@ export default function Homepage() {
     const [showModal, setShowModal] = useState<boolean>(false);
 
     useEffect(() => {
-        const apiUrl = 'https://abda-67-134-204-12.ngrok.io/get_json'; 
-        const choiceUrl = 'https://abda-67-134-204-12.ngrok.io/get_options';
-        setReport([...gardenReportData, {id: 6, date: moment().format('YYYY-MM-DD'), Intensity: 0}]);
+        const apiUrl = 'https://6b62-67-134-204-12.ngrok.io/get_json'; 
+        const choiceUrl = 'https://6b62-67-134-204-12.ngrok.io/get_options';
         axiosRequest(apiUrl, "GET", {}, gardenReportData)
           .then((response: any) => {
             console.log(JSON.parse(response))
@@ -45,17 +45,19 @@ export default function Homepage() {
             } 
           })
           .catch((error: any) => {
+            setReport([...gardenReportData, {id: 6, date: moment().format('YYYY-MM-DD'), Intensity: 0}]);
             console.error('Error fetching JSON data:', error);
           });
-          axiosRequest(choiceUrl, "GET", {}, gardenReportData)
+          axiosRequest(choiceUrl, "GET", {}, workoutReportData)
           .then((response: any) => {
             console.log(JSON.parse(response))
             if (JSON.parse(response) !== undefined) {
-                setSuggestions(response);
+                setSuggestions(JSON.parse(response));
             }
             console.log(response);
           })
           .catch((error: any) => {
+            setSuggestions(workoutReportData);
             console.error('Error fetching JSON data:', error);
           });
       }, []);
@@ -67,13 +69,13 @@ export default function Homepage() {
                     <NavBar />
                     <div className="flex flex-col justify-between" style={{width: 'calc(100% - 32px)'}}>
                         <div className="flex flex-row justify-around">
-                            <div className="w-1/5 max-h-[15rem]">
+                            <div className="w-1/5 max-h-[20rem]">
                                 <img src={idToPlants(1, report[0]?.Intensity ?? 0)} alt="Image 2" />
                             </div>
-                            <div className="w-1/5 max-h-[15rem]">
+                            <div className="w-1/5 max-h-[20rem]">
                                 <img src={idToPlants(0, report[2]?.Intensity ?? 0)} alt="Image 3" />
                             </div>
-                            <div className="w-1/5 max-h-[15rem]">
+                            <div className="w-1/5 max-h-[20rem]">
                                 <img src={idToPlants(2, report[4]?.Intensity ?? 0)} alt="Image 4" />
                             </div>
                         </div>
@@ -129,18 +131,24 @@ export default function Homepage() {
                         </div>
                     </>
                 </div>
-                {showModal && 
-                    <Modal onClose={() => setShowModal(false)}>
-                        <div>
-                        {suggestions ? 
-                            <div>
-                            <b>{suggestions.EASY?.Distance}</b>
-                            <b>{suggestions.EASY?.Pace} </b>
-                            </div> :
-                            <div>
-
+                {(showModal && suggestions) && 
+                    <Modal title="Personalized Workout Plans" onClose={() => setShowModal(false)}>
+                        <div className="grid grid-cols-3 gap-8">
+                            <div className="bg-white rounded-lg flex flex-col items-center justify-center p-4">
+                                <MdOutlineNordicWalking size={70} />
+                                <p className="text-center mt-2"><b className="font-600">Distance:</b> {suggestions.EASY?.Distance} miles</p>
+                                <p><b className="font-600">Pace:</b> Light</p>
                             </div>
-                        }
+                            <div className="bg-white rounded-lg flex flex-col items-center justify-center p-4">
+                                <MdOutlineDirectionsWalk size={70} />  
+                                <p className="text-center mt-2"><b className="font-600">Distance:</b> {suggestions.MEDIUM?.Distance} miles</p>
+                                <p><b className="font-600">Pace:</b> Moderate</p>
+                            </div>
+                            <div className="bg-white rounded-lg flex flex-col items-center justify-center p-4">
+                                <MdOutlineDirectionsRun size={70} />
+                                <p className="text-center mt-2"><b className="font-600">Distance:</b> {suggestions.HARD?.Distance} miles</p>
+                                <p><b className="font-600">Pace:</b> Fast</p>
+                            </div>
                         </div>
                     </Modal>
                 }
