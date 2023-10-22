@@ -30,3 +30,9 @@ export const gardenReportData = [
         Intensity: 0.34,
     },
 ]
+
+export const workoutReportData = [
+    {
+        easy: 2
+    },
+]

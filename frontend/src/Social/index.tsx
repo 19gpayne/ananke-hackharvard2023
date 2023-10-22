@@ -6,6 +6,7 @@ import { devChats, devFriends } from './devData';
 import {GiWateringCan} from 'react-icons/gi';
 import {PiButterflyDuotone} from 'react-icons/pi';
 import { getInitials } from '../utils/functions';
+import pinkButterfly from '../assets/Butterflies/PinkButterfly.svg'
 
 export enum GardenStatus {
     DEAD = 'dead',
@@ -46,14 +47,14 @@ export default function Social() {
                 <div className="col-span-7 mr-8">
                     <div className="rounded-3xl mt-4 p-4 h-full mb-2" style={{backgroundColor: LIGHT_COLOR}}>
                         <div className="w-full text-right mb-2">
-                            <button className="text-white rounded-lg p-2" style={{backgroundColor: DARK_PRIMARY_COLOR}}>+ Add Friends</button>
+                            <button className="text-white rounded-lg p-2 font-semibold" style={{backgroundColor: DARK_PRIMARY_COLOR}}>+ Add Friends</button>
                         </div>
                         {friends.map((friend) => {
                             return (
-                                <div key={friend.id} className="flex justify-between items-center">
+                                <div key={friend.id} className="flex justify-between items-center mt-4">
                                     <div className="flex items-center">
-                                        {/* <img src={friend.icon} className="w-16 mr-3" alt="" /> */}
-                                        <PiButterflyDuotone size={42} />
+                                        <img src={friend.icon} className="w-16 mr-3" alt="" />
+                                        {/* <img src={pinkButterfly} className='w-[8%]' /> */}
                                         <span className="text-xl ml-3">{friend.name}</span>
                                     </div>
                                     
@@ -66,7 +67,7 @@ export default function Social() {
                     </div>
                 </div>
                 <div className="col-span-2 mt-[-8.5vh]">
-                    <div className="rounded-t-3xl p-3 text-white text-center" style={{backgroundColor: SECONDARY_COLOR}}>
+                    <div className="rounded-t-3xl p-3 text-white text-center text-2xl" style={{backgroundColor: SECONDARY_COLOR}}>
                         <b>Blossom Chats</b>
                     </div>
                     <div className="rounded-b-3xl px-3 py-5 overflow-scroll flex flex-col gap-4" style={{backgroundColor: LIGHT_COLOR, height: 'calc(100vh - 84px)'}}>
@@ -74,7 +75,7 @@ export default function Social() {
                             return (
                                 <div className="rounded-lg bg-white p-3">
                                     <span className="rounded text-white text-center w-min p-1 mr-3" style={{backgroundColor: SECONDARY_COLOR}}>{getInitials(chat.sender)}</span>
-                                    <span>{chat.sender}</span>
+                                    <span className="font-medium">{chat.sender}</span>
                                     <p className="mt-3">{chat.message}</p>
                                 </div>
                             )

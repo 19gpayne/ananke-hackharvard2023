@@ -15,20 +15,47 @@ type WorkoutReport = {
     Intensity: number,
 }
 
+type WorkoutChoice = {
+    distance: number;
+    pace: number;
+}
+
+type WorkoutSuggestions = {
+    easy: WorkoutChoice;
+    medium: WorkoutChoice;
+    hard: WorkoutChoice;
+}
+
 export default function Homepage() {
     const [report, setReport] = useState<WorkoutReport[]>([]);
+    const [choice, setChoice] = useState<WorkoutChoice[]>([]);
+    const [suggestions, setSuggestions] = useState<WorkoutSuggestions>();
     const [today, setToday] = useState<WorkoutReport | null>(null);
     const [showModal, setShowModal] = useState<boolean>(false);
 
     useEffect(() => {
         const apiUrl = 'https://f58f-67-134-204-12.ngrok.io/get_json'; 
+        const choiceUrl = 'https://75ce-67-134-204-12.ngrok.io/get_options';
         setReport([...gardenReportData, {id: 6, date: moment().format('YYYY-MM-DD'), Intensity: 0}]);
         axiosRequest(apiUrl, "GET", {}, gardenReportData)
           .then((response: any) => {
             console.log(JSON.parse(response))
             if (JSON.parse(response) !== undefined) {
                 setReport([...gardenReportData, {id: 6, ...JSON.parse(response)}]);
+            } 
+          })
+          .catch((error: any) => {
+            console.error('Error fetching JSON data:', error);
+          });
+          axiosRequest(choiceUrl, "GET", {}, gardenReportData)
+          .then((response: any) => {
+            console.log(JSON.parse(response))
+            if (JSON.parse(response) !== undefined) {
+                setSuggestions(JSON.parse(response));
             }
+            console.log(response);
+            console.log(JSON.parse(response));
+            console.log(JSON.parse(response.data)) 
           })
           .catch((error: any) => {
             console.error('Error fetching JSON data:', error);
@@ -73,7 +100,7 @@ export default function Homepage() {
                 </div>
                 <div className="col-span-2 mt-[-9.5vh]">
                     <div className="rounded-3xl p-3 text-center mb-2" style={{backgroundColor: LIGHT_COLOR}}>
-                        <b>Today's Bloom</b>
+                        <b className='text-xl'>Today's Bloom</b>
                         <div className="grid grid-cols-3 justify-items-center mt-2">
                             <p className="col-span-2">
                                 {today ? 
@@ -89,14 +116,14 @@ export default function Homepage() {
                         <div className="w-full mt-2"><ActionButton label={"See Workouts"} onClick={() => {setShowModal(true)}} /></div>
                     </div>
                     <>
-                        <div className="rounded-t-3xl p-3 text-white text-center" style={{backgroundColor: SECONDARY_COLOR}}>
+                        <div className="rounded-t-3xl p-3 text-white text-center text-2xl" style={{backgroundColor: SECONDARY_COLOR}}>
                             <b>Garden Report</b>
                         </div>
                         <div className="rounded-b-3xl p-3 pt-5" style={{backgroundColor: LIGHT_COLOR}}>
                             {report.map(d => {
                                 return (
                                     <div key={d.id} className="flex gap-2 ml-3 mb-3 items-center">
-                                        <img src={idToPlants(moment(d.date).day(), -1)} className="w-[3rem] h-[3rem] rounded" style={{border: `3px solid ${strengthToColor(d.Intensity)}`}}/>
+                                        <img src={idToPlants(moment(d.date).day(), -1)} className="w-[3rem] h-[3rem] p-1 rounded" style={{border: `3px solid ${strengthToColor(d.Intensity)}`}}/>
                                         {moment(d.date).format('dddd, MMM Do')}
                                     </div>
                                 )
@@ -106,7 +133,15 @@ export default function Homepage() {
                 </div>
                 {showModal && 
                     <Modal onClose={() => setShowModal(false)}>
-                        <div>Modal!</div>
+                        <div>{suggestions ? 
+                        <div>
+                            {suggestions.easy?.distance}
+                            {suggestions.easy?.pace}
+                            </div> :
+                            <div>
+
+                                </div>
+                            }</div>
                     </Modal>
                 }
             </div>

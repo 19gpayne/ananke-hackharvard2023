@@ -1,22 +1,26 @@
 import { GardenStatus } from "."
+import pinkButterfly from '../assets/Butterflies/PinkButterfly.svg'
+import blueButterfly from '../assets/Butterflies/BlueButterfly.svg'
+import purpleButterfly from '../assets/Butterflies/PurpleButterfly.svg'
+
 
 export const devFriends = [
     {
         id: "123",
         name: 'John Doe',
-        icon: "https://picsum.photos/200",
+        icon: pinkButterfly,
         status: 'growing',
     },
     {
         id: "12",
         name: 'Joe Stubi',
-        icon: "https://picsum.photos/200",
+        icon: blueButterfly,
         status: 'thriving',
     },
     {
         id: "1",
         name: 'Mac Tubi',
-        icon: "https://picsum.photos/200",
+        icon: purpleButterfly,
         status: 'blooming',
     },
 ]
