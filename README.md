@@ -1,7 +1,7 @@
 # Ananke - The fitness app for the average Joe
 Built at HackHarvard 2023
 
-![Logo](frontend/src/assets/Logo.svg)
+![Logo](frontend/src/assets/Logo_padded.svg)
 
 # ✨Key facts
 - Flowery frontend written in React
