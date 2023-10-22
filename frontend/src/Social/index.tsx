@@ -5,6 +5,7 @@ import { devChats, devFriends } from './devData';
 import {GiWateringCan} from 'react-icons/gi';
 import { getInitials } from '../utils/functions';
 import ActionButton from '../Components/Buttons/ActionButton';
+import { getStatusIcon } from '../utils/plants';
 
 export enum GardenStatus {
     DEAD = 'dead',
@@ -47,7 +48,7 @@ export default function Social() {
                         <div className="w-full text-right mb-2">
                             <ActionButton label="+ Add Friends" onClick={() => {}} />
                         </div>
-                        {friends.map((friend) => {
+                        {friends.map((friend, index) => {
                             return (
                                 <div key={friend.id} className="flex justify-between items-center mt-4 p-2 rounded-lg" style={{backgroundColor: 'white'}}>
                                     <div className="flex items-center">
@@ -55,9 +56,12 @@ export default function Social() {
                                         {/* <img src={pinkButterfly} className='w-[8%]' /> */}
                                         <span className="text-xl ml-3 font-medium">{friend.name}</span>
                                     </div>
-                                    
-                                    <span className="text-base">Garden Status: {friend.status}</span>
-                                    <span className="text-base">Streak: 8 days</span>
+                                    <div className='flex items-center'>
+                                    <span className="text-base">
+                                        Garden Status: {friend.status}</span>
+                                        <img src={getStatusIcon(friend.status)} className="w-10 ml-3 h-10"/>
+                                        </div>
+                                    <span className="text-base">Streak: {index * 2 + 1} days</span>
                                     <button className="w-16"><GiWateringCan size={28} className="rounded-lg w-full" style={{backgroundColor: BLUE}}/></button>
                                 </div>
                             )

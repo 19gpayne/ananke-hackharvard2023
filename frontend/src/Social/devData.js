@@ -2,6 +2,7 @@ import { GardenStatus } from "."
 import pinkButterfly from '../assets/Butterflies/PinkButterfly.svg'
 import blueButterfly from '../assets/Butterflies/BlueButterfly.svg'
 import purpleButterfly from '../assets/Butterflies/PurpleButterfly.svg'
+import orangeButterfly from '../assets/Butterflies/OrangeButterfly.svg'
 
 
 export const devFriends = [
@@ -22,6 +23,12 @@ export const devFriends = [
         name: 'Mac Tubi',
         icon: purpleButterfly,
         status: 'Blooming',
+    },
+    {
+        id: "6",
+        name: 'Gwen Pel',
+        icon: orangeButterfly,
+        status: 'Decaying',
     },
 ]
 

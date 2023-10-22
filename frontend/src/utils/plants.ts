@@ -40,6 +40,11 @@ import MatureRose from '../assets/plants/Rose/MatureRose.svg';
 import BloomingRose from '../assets/plants/Rose/BloomingRose.svg';
 import PotRose from '../assets/Pots/RosePot.svg';
 
+import thriving from '../assets/gardenStatus/thriving.svg';
+import decaying from '../assets/gardenStatus/decaying.svg';
+import growing from '../assets/gardenStatus/growing.svg';
+import blooming from '../assets/gardenStatus/blooming.svg';
+
 type Plant = {
     name: string;
     stock: string;
@@ -174,6 +179,19 @@ const getPlantState = (state: string, plant: Plant) => {
             return plant.bloomed;
         default:
             return plant.dead;
+    }
+}
+
+export const getStatusIcon = (state: string) => {
+    switch (state) {
+        case 'Thriving':
+            return thriving;
+        case 'Blooming':
+            return blooming;
+        case 'Growing':
+            return growing;
+        case 'Decaying':
+            return decaying;
     }
 }
 

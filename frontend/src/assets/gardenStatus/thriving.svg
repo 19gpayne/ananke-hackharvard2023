@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.59 58.87">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #006937;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 5.11px;
+      }
+
+      .cls-2 {
+        fill: #56a160;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        fill: #f1d013;
+      }
+
+      .cls-5 {
+        fill: #009247;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="cls-5" d="m48.3,32.11c2.16-30.22,36.39-18.78,48.3-13.13"/>
+      <path class="cls-2" d="m48.3,32.11c17.16,24.97,40.89-2.22,48.3-13.13"/>
+    </g>
+    <g>
+      <path class="cls-5" d="m48.3,31.69C46.14,1.46,11.91,12.9,0,18.56"/>
+      <path class="cls-2" d="m48.3,31.69C31.14,56.66,7.41,29.46,0,18.56"/>
+    </g>
+    <line class="cls-1" x1="48.3" y1="30.66" x2="48.3" y2="56.31"/>
+    <g>
+      <g id="_Radial_Repeat_" data-name="&amp;lt;Radial Repeat&amp;gt;">
+        <path class="cls-3" d="m53.25,26.86c-1.17,11.02-7.74,18.31-14.26,18.51-2.85.09-6.61-1.15-8.09-3.95-2.57-4.85,1.85-14,12.77-21.43l9.58,6.88Z"/>
+      </g>
+      <g id="_Radial_Repeat_-2" data-name="&amp;lt;Radial Repeat&amp;gt;">
+        <path class="cls-3" d="m47.32,30.14c-10.84,2.29-19.8-1.7-22.01-7.84-.96-2.68-.94-6.64,1.26-8.92,3.81-3.94,13.88-2.57,24.33,5.52l-3.58,11.24Z"/>
+      </g>
+      <g id="_Radial_Repeat_-3" data-name="&amp;lt;Radial Repeat&amp;gt;">
+        <path class="cls-3" d="m42.37,25.52c-5.53-9.61-4.5-19.36.66-23.35,2.26-1.75,6.02-2.95,8.87-1.56,4.93,2.41,6.73,12.41,2.27,24.85l-11.8.07Z"/>
+      </g>
+      <g id="_Radial_Repeat_-4" data-name="&amp;lt;Radial Repeat&amp;gt;">
+        <path class="cls-3" d="m45.23,19.38c7.43-8.23,17.02-10.26,22.42-6.59,2.36,1.61,4.67,4.82,4.22,7.96-.77,5.43-9.72,10.24-22.93,9.83l-3.71-11.2Z"/>
+      </g>
+      <g id="_Radial_Repeat_-5" data-name="&amp;lt;Radial Repeat&amp;gt;">
+        <path class="cls-3" d="m51.95,20.2c10.12,4.52,15.02,13.02,13.19,19.28-.8,2.74-3.14,5.93-6.26,6.48-5.4.95-12.74-6.08-16.44-18.77l9.51-6.99Z"/>
+      </g>
+    </g>
+    <circle class="cls-4" cx="48.03" cy="24.42" r="8.5"/>
+  </g>
+</svg>
