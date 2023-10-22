@@ -34,10 +34,10 @@ export default function Homepage() {
     const [today, setToday] = useState<WorkoutReport | null>(null);
     const [showModal, setShowModal] = useState<boolean>(false);
 
-    useEffect(() => {
+    async function getData() {
         const apiUrl = 'https://d544-67-134-204-12.ngrok.io/get_json'; 
         const choiceUrl = 'https://d544-67-134-204-12.ngrok.io/get_options';
-        axiosRequest(apiUrl, "GET", {}, gardenReportData)
+        await axiosRequest(apiUrl, "GET", {}, gardenReportData)
           .then((response: any) => {
             console.log(JSON.parse(response))
             if (JSON.parse(response) !== undefined) {
@@ -48,7 +48,7 @@ export default function Homepage() {
             setReport([...gardenReportData, {id: 6, date: moment().format('YYYY-MM-DD'), Intensity: 0}]);
             console.error('Error fetching JSON data:', error);
           });
-          axiosRequest(choiceUrl, "GET", {}, workoutReportData)
+          await axiosRequest(choiceUrl, "GET", {}, workoutReportData)
           .then((response: any) => {
             console.log(JSON.parse(response))
             if (JSON.parse(response) !== undefined) {
@@ -60,6 +60,10 @@ export default function Homepage() {
             setSuggestions(workoutReportData);
             console.error('Error fetching JSON data:', error);
           });
+    }
+
+    useEffect(() => {
+        getData()
       }, []);
     
     return (
