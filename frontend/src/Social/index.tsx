@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import NavBar from '../Nav';
 import {BLUE, DARK_PRIMARY_COLOR, LIGHT_COLOR, PRIMARY_COLOR, SECONDARY_COLOR} from '../utils/colors';
 import { devChats, devFriends } from './devData';
-import {GiWateringCan} from 'react-icons/gi';
+import {IoIosWater} from 'react-icons/io';
 import { getInitials } from '../utils/functions';
 import ActionButton from '../Components/Buttons/ActionButton';
 import { getStatusIcon } from '../utils/plants';
+import Modal from '../Components/Modal';
 
 export enum GardenStatus {
     DEAD = 'dead',
@@ -31,6 +32,8 @@ type Chat = {
 export default function Social() {   
     const [friends, setFriends] = useState<Friend[]>([]);
     const [chats, setChats] = useState<Chat[]>(devChats as Chat[]); 
+    const [chatModalFriend, setChatModalFriend] = useState<Friend | null>(null);
+    const [showChatModal, setShowChatModal] = useState(false);
 
     const fetchFriends = async () => {
         setFriends(devFriends as Friend[])
@@ -53,7 +56,6 @@ export default function Social() {
                                 <div key={friend.id} className="flex justify-between items-center mt-4 p-2 rounded-lg" style={{backgroundColor: 'white'}}>
                                     <div className="flex items-center">
                                         <img src={friend.icon} className="w-16 mr-3" alt="" />
-                                        {/* <img src={pinkButterfly} className='w-[8%]' /> */}
                                         <span className="text-xl ml-3 font-medium">{friend.name}</span>
                                     </div>
                                     <div className='flex items-center'>
@@ -62,7 +64,9 @@ export default function Social() {
                                         <img src={getStatusIcon(friend.status)} className="w-10 ml-3 h-10"/>
                                         </div>
                                     <span className="text-base">Streak: {index * 2 + 1} days</span>
-                                    <button className="w-16"><GiWateringCan size={28} className="rounded-lg w-full" style={{backgroundColor: BLUE}}/></button>
+                                    <button className="w-16" onClick={() => {setShowChatModal(true);setChatModalFriend(friend)}}>
+                                        <IoIosWater size={28} className="rounded-lg w-full" style={{backgroundColor: BLUE}}/>
+                                    </button>
                                 </div>
                             )
                         })}
@@ -85,6 +89,17 @@ export default function Social() {
                     </div>
                 </div>
             </div>
+            {showChatModal && 
+                <Modal 
+                    title={`Water ${chatModalFriend?.name.split(" ")[0]}'s plants`}
+                    onClose={() => {setShowChatModal(false)}}
+                >
+                    <div>
+                        <textarea rows={6} className="rounded-3xl p-4 w-full">Write message here...</textarea>
+                        <div className="w-full text-right mt-2"><ActionButton label='Send message' onClick={() => {}} /></div>
+                    </div>
+                </Modal>
+            }
         </div>
     );
 }

@@ -69,13 +69,13 @@ export default function Homepage() {
                     <NavBar />
                     <div className="flex flex-col justify-between" style={{width: 'calc(100% - 32px)'}}>
                         <div className="flex flex-row justify-around">
-                            <div className="w-1/5 max-h-[21rem]">
+                            <div className="w-1/5 max-h-[20rem]">
                                 <img src={idToPlants(1, report[1]?.Intensity ?? 0)} alt="Image 2" />
                             </div>
-                            <div className="w-1/5 max-h-[21rem]">
+                            <div className="w-1/5 max-h-[20rem]">
                                 <img src={idToPlants(3, report[3]?.Intensity ?? 0)} alt="Image 3" />
                             </div>
-                            <div className="w-1/5 max-h-[21rem]">
+                            <div className="w-1/5 max-h-[20rem]">
                                 <img src={idToPlants(5, report[5]?.Intensity ?? 0)} alt="Image 4" />
                             </div>
                         </div>

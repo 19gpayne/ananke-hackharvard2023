@@ -15,7 +15,7 @@ export default function Modal({
             <div className="fixed inset-0 flex items-center justify-center z-50">
                 <div className="rounded-3xl shadow-lg" style={{backgroundColor: LIGHT_COLOR}}>
                     <div className="text-white rounded-t-3xl flex justify-between p-6" style={{backgroundColor: SECONDARY_COLOR}}>
-                        <h2 className="text-2xl font-semibold">{title}</h2>
+                        <h2 className="text-2xl font-semibold mr-8">{title}</h2>
                         <button className="text-white text-2xl" onClick={onClose}>
                             X
                         </button>
