@@ -45,6 +45,7 @@ import decaying from '../assets/gardenStatus/decaying.svg';
 import growing from '../assets/gardenStatus/growing.svg';
 import blooming from '../assets/gardenStatus/blooming.svg';
 
+//Type of plant, has 4 different stages of growth
 type Plant = {
     name: string;
     stock: string;
@@ -118,6 +119,7 @@ export const Rose: Plant = {
     bloomed: BloomingRose,
 }
 
+//Returns the correct plant based on the day of the week
 export const dayToPlant = (day: number) => {
     switch (day) {
         case 0:
@@ -139,6 +141,7 @@ export const dayToPlant = (day: number) => {
     }
 }
 
+//Returns a color based on the intensity of a workout
 export const strengthToColor = (strength: number) => {
     if (strength < 0.25) {
         return 'darkred'
@@ -151,6 +154,7 @@ export const strengthToColor = (strength: number) => {
     }
 }
 
+//Returns a plant stage based on the intensity of a workout
 const strengthToPlantStage = (strength: number) => {
     if (strength < 0) {
         return 'stock'
@@ -165,6 +169,7 @@ const strengthToPlantStage = (strength: number) => {
     }
 }
 
+//Returns the correct image of a plant based on the stage
 const getPlantState = (state: string, plant: Plant) => {
     switch (state) {
         case 'stock':
@@ -182,6 +187,7 @@ const getPlantState = (state: string, plant: Plant) => {
     }
 }
 
+//Returns the correct icon based on the stage of growth
 export const getStatusIcon = (state: string) => {
     switch (state) {
         case 'Thriving':
@@ -195,6 +201,7 @@ export const getStatusIcon = (state: string) => {
     }
 }
 
+//Returns the image of a plant based on a plant id and strength of workout
 export const idToPlants = (id: number, strength: number) => {
     switch (id) {
         case 0:

@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+//Interprets API requests based on a given method
 export const axiosRequest = (url, method, json, devRes) => {
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
   if (window.location.hostname !== 'localhost') { 
