@@ -6,9 +6,11 @@ import "./index.css"
 export default function NavBar() {
     const { pathname } = useLocation();
     return (
-        <div className="m-4 ml-6 mb-0">
+        <div 
+            className="mt-4 mb-0"
+        >
             <nav 
-                className="text-white flex gap-8 text-xl w-fit p-2 rounded nav--background-image flex items-center" 
+                className="text-white flex gap-8 text-xl w-fit p-2 rounded nav--background-image flex items-center w-full" 
                 style={{backgroundImage: `url(${woodpattern3})`}}
             >
                 <div className="p-2 bg-white rounded-lg"><img src={logo} className="w-8"/></div>

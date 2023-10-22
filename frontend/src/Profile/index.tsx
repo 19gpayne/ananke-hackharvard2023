@@ -7,9 +7,9 @@ import { FaTrash} from 'react-icons/fa';
 export default function Profile() {
     return (
             <div className="w-full absolute left-0 top-0 bottom-0" style={{backgroundColor: PRIMARY_COLOR}}>
-                <NavBar />
                 <div className="grid grid-cols-9 mx-6">
-                    <div className="col-span-5 mr-12">
+                    <div className="col-span-7 mr-12">
+                        <NavBar />
                         <div className="rounded-3xl mt-4 p-4 h-full mb-2 columns-3" style={{backgroundColor: LIGHT_COLOR}}>
                             <div className="col-span-1">
                                 <div className="w-10 h-10 rounded"  style={{backgroundColor: PRIMARY_COLOR}}>
@@ -20,7 +20,7 @@ export default function Profile() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-span-4">
+                    <div className="col-span-2">
                         <div className="rounded-t-3xl p-3" style={{height: 'calc(100vh - 84px)'}}>
                             <b className="text-orange text-left text-2xl">My Wearables</b>
                             <div className="rounded-full px-3 py-5 grid grid-cols-3 mt-3 mb-7 justify-items-center" style={{backgroundColor: LIGHT_COLOR, height: 'calc((100vh - 84px)/6)'}}>

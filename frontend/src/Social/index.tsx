@@ -42,9 +42,9 @@ export default function Social() {
     }, [])
     return (
         <div className="w-full absolute left-0 top-0 bottom-0" style={{backgroundColor: PRIMARY_COLOR}}>
-            <NavBar />
             <div className="grid grid-cols-9 mx-6">
                 <div className="col-span-7 mr-8">
+                    <NavBar />
                     <div className="rounded-3xl mt-4 p-4 h-full mb-2" style={{backgroundColor: LIGHT_COLOR}}>
                         <div className="w-full text-right mb-2">
                             <button className="text-white rounded-lg p-2 font-semibold" style={{backgroundColor: DARK_PRIMARY_COLOR}}>+ Add Friends</button>
@@ -66,8 +66,8 @@ export default function Social() {
                         })}
                     </div>
                 </div>
-                <div className="col-span-2 mt-[-8.5vh]">
-                    <div className="rounded-t-3xl p-3 text-white text-center text-2xl" style={{backgroundColor: SECONDARY_COLOR}}>
+                <div className="col-span-2">
+                    <div className="rounded-t-3xl p-3 text-white text-center text-2xl mt-4" style={{backgroundColor: SECONDARY_COLOR}}>
                         <b>Blossom Chats</b>
                     </div>
                     <div className="rounded-b-3xl px-3 py-5 overflow-scroll flex flex-col gap-4" style={{backgroundColor: LIGHT_COLOR, height: 'calc(100vh - 84px)'}}>

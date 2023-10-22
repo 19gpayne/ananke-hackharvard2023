@@ -16,14 +16,14 @@ type WorkoutReport = {
 }
 
 type WorkoutChoice = {
-    distance: number;
-    pace: number;
+    Distance: number;
+    Pace: number;
 }
 
 type WorkoutSuggestions = {
-    easy: WorkoutChoice;
-    medium: WorkoutChoice;
-    hard: WorkoutChoice;
+    EASY: WorkoutChoice;
+    MEDIUM: WorkoutChoice;
+    HARD: WorkoutChoice;
 }
 
 export default function Homepage() {
@@ -34,8 +34,8 @@ export default function Homepage() {
     const [showModal, setShowModal] = useState<boolean>(false);
 
     useEffect(() => {
-        const apiUrl = 'https://f58f-67-134-204-12.ngrok.io/get_json'; 
-        const choiceUrl = 'https://abda-67-134-204-12.ngrok.iogit/get_options';
+        const apiUrl = 'https://abda-67-134-204-12.ngrok.io/get_json'; 
+        const choiceUrl = 'https://abda-67-134-204-12.ngrok.io/get_options';
         setReport([...gardenReportData, {id: 6, date: moment().format('YYYY-MM-DD'), Intensity: 0}]);
         axiosRequest(apiUrl, "GET", {}, gardenReportData)
           .then((response: any) => {
@@ -51,11 +51,9 @@ export default function Homepage() {
           .then((response: any) => {
             console.log(JSON.parse(response))
             if (JSON.parse(response) !== undefined) {
-                setSuggestions(JSON.parse(response));
+                setSuggestions(response);
             }
             console.log(response);
-            console.log(JSON.parse(response));
-            console.log(JSON.parse(response.data)) 
           })
           .catch((error: any) => {
             console.error('Error fetching JSON data:', error);
@@ -64,19 +62,10 @@ export default function Homepage() {
     
     return (
         <div className="w-full absolute left-0 top-0 bottom-0" style={{backgroundColor: PRIMARY_COLOR}}>
-            <NavBar />
-                                    <div>{suggestions ? 
-                        <div>
-                           <b> {suggestions.easy?.distance} </b>
-                           <b>{suggestions.easy?.pace} </b>
-                            </div> :
-                            <div>
-
-                                </div>
-                            }</div>
             <div className="grid grid-cols-9 mx-6">
                 <div className="col-span-7 mr-8">
-                    <div className="flex flex-col justify-between">
+                    <NavBar />
+                    <div className="flex flex-col justify-between" style={{width: 'calc(100% - 32px)'}}>
                         <div className="flex flex-row justify-around">
                             <div className="w-1/5 max-h-[15rem]">
                                 <img src={idToPlants(1, report[0]?.Intensity ?? 0)} alt="Image 2" />
@@ -107,8 +96,8 @@ export default function Homepage() {
                         </div>
                     </div>
                 </div>
-                <div className="col-span-2 mt-[-9.5vh]">
-                    <div className="rounded-3xl p-3 text-center mb-2" style={{backgroundColor: LIGHT_COLOR}}>
+                <div className="col-span-2">
+                    <div className="rounded-3xl p-3 text-center mb-2 mt-4" style={{backgroundColor: LIGHT_COLOR}}>
                         <b className='text-xl'>Today's Bloom</b>
                         <div className="grid grid-cols-3 justify-items-center mt-2">
                             <p className="col-span-2">
@@ -142,6 +131,17 @@ export default function Homepage() {
                 </div>
                 {showModal && 
                     <Modal onClose={() => setShowModal(false)}>
+                        <div>
+                        {suggestions ? 
+                            <div>
+                            <b>{suggestions.EASY?.Distance}</b>
+                            <b>{suggestions.EASY?.Pace} </b>
+                            </div> :
+                            <div>
+
+                            </div>
+                        }
+                        </div>
                     </Modal>
                 }
             </div>
